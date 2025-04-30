@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Manaba Drag and Drop",
+  "version": "1.0",
+  "description": "A Chrome extension to enable drag and drop functionality on the manaba assignment submission site.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["*://*.manaba.*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.manaba.*/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
