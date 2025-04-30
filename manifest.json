@@ -1,26 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Manaba Drag and Drop",
+  "name": "Manaba DnD File Uploader",
   "version": "1.0",
-  "description": "A Chrome extension to enable drag and drop functionality on the manaba assignment submission site.",
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["*://*.manaba.*/*"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "description": "Enable drag and drop file upload functionality for manaba submission pages",
+  "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["*://*.manaba.*/*"],
-      "js": ["content_script.js"],
-      "run_at": "document_end"
+      "matches": ["https://manaba.lms.tokushima-u.ac.jp/ct/course_*_report_*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }
