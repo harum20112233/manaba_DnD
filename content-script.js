@@ -52,9 +52,6 @@ function initDragAndDrop() {
     cursor: pointer;
   `;
 
-  // ページにドロップゾーンを追加
-  uploadContainer.insertBefore(dropZone, fileInput.nextSibling);
-
   // ドラッグアンドドロップのためのイベントリスナーを追加
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
