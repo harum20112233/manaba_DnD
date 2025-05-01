@@ -3,12 +3,13 @@
   "name": "Manaba DnD File Uploader",
   "version": "1.0",
   "description": "Enable drag and drop file upload functionality for manaba submission pages",
-  "permissions": ["activeTab"],
+  "host_permissions": [
+    "https://manaba.lms.tokushima-u.ac.jp/ct/course_*_report_*"
+  ],
   "content_scripts": [
     {
       "matches": ["https://manaba.lms.tokushima-u.ac.jp/ct/course_*_report_*"],
-      "js": ["content.js"],
-      "css": ["styles.css"]
+      "js": ["content-script.js"]
     }
   ],
   "icons": {
