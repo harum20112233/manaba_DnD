@@ -75,6 +75,15 @@ function initDragAndDropOverlay() {
   const highlightBgColor = "rgba(220, 235, 255, 0.95)";
   const highlightBorderColor = "#40a9ff";
 
+  const hideOverlay = () => {
+    if (overlayDropZone.style.display !== "none") {
+      overlayDropZone.style.borderColor = baseBorderColor;
+      overlayDropZone.style.backgroundColor = baseBgColor;
+      overlayDropZone.style.display = "none";
+      console.log("Overlay hidden");
+    }
+  };
+
   // --- オーバーレイを表示する (windowで検知) ---
   window.addEventListener(
     "dragenter",
@@ -105,11 +114,11 @@ function initDragAndDropOverlay() {
       e.clientY >= window.innerHeight
     ) {
       // ウィンドウ外に出たら非表示にする
-      overlayDropZone.style.display = "none";
-      overlayDropZone.style.borderColor = baseBorderColor;
+      hideOverlay();
     } else {
       // ウィンドウ内に留まっている場合はボーダー色だけ元に戻す
-      overlayDropZone.style.borderColor = baseBorderColor;
+      // overlayDropZone.style.borderColor = baseBorderColor;
+      hideOverlay();
     }
   });
 
@@ -118,8 +127,7 @@ function initDragAndDropOverlay() {
     e.stopPropagation();
 
     // スタイルを元に戻す
-    overlayDropZone.style.display = "none";
-    overlayDropZone.style.borderColor = baseBorderColor;
+    hideOverlay();
 
     const files = e.dataTransfer.files;
 
@@ -157,16 +165,13 @@ function initDragAndDropOverlay() {
     // オーバーレイ自身がクリックされた場合のみ
     if (e.target === overlayDropZone) {
       fileInput.click();
-      overlayDropZone.style.display = "none"; // ★ 非表示にする
+      hideOverlay();
     }
   });
 
   // ファイル入力が (通常のクリックなどで) 変更された場合もオーバーレイを隠す
   fileInput.addEventListener("change", () => {
-    // ファイルが選択されたらオーバーレイを隠す
-    if (fileInput.files.length > 0) {
-      overlayDropZone.style.display = "none";
-    }
+    hideOverlay();
     // 必要であれば、ここでも元のラベル等のUI更新を行う
     const originalDropZoneLabel = document.querySelector(
       ".dropzone label.file-upload-button"
@@ -191,8 +196,7 @@ function initDragAndDropOverlay() {
     () => {
       if (overlayDropZone.style.display !== "none") {
         // マウスボタンが離された時にオーバーレイが表示されたままなら、非表示にする
-        overlayDropZone.style.display = "none";
-        overlayDropZone.style.borderColor = baseBorderColor;
+        hideOverlay();
       }
     },
     true
