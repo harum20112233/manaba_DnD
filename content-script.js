@@ -51,15 +51,15 @@ function initDragAndDropOverlay() {
     bottom: "0",
     width: "100%",
     height: "100%",
-    // backgroundColor: "rgba(240, 240, 240, 0.9)", // 半透明の背景
-    // border: "3px dashed #aaa",
+    backgroundColor: "rgba(240, 240, 240, 0.9)", // 半透明の背景
+    border: "3px dashed #aaa",
     borderRadius: "10px",
     display: "flex", // Flexboxで中央揃え
     alignItems: "center",
     justifyContent: "center",
     zIndex: "2",
     cursor: "pointer",
-    transition: "background-color 0.3s ease, border-color 0.3s ease", // スムーズな変化
+    transition: "background-color 0.3s ease, border-color 0.1s ease", // スムーズな変化
     // 初期状態では非表示にするか、常に表示するか選択できます。
     display: "none", //例: 最初は非表示にしてドラッグ時に表示する場合
   });
@@ -145,7 +145,7 @@ function initDragAndDropOverlay() {
       // 重要: ドロップ後、オーバーレイを非表示にする
       overlayDropZone.style.display = "none"; // 非表示にする
 
-      // 必要であれば、ファイル選択後のメッセージを元のページ要素に表示する処理を追加
+      // ファイル選択後のメッセージを元のページ要素に表示する処理を追加
       // 例: 元の .dropzone 内のラベルを探して更新
       const originalDropZoneLabel = document.querySelector(
         ".dropzone label.file-upload-button"
