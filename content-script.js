@@ -1,5 +1,4 @@
 // content-script.js - manabaのドラッグアンドドロップファイルアップローダー拡張機能
-//test
 // ページが完全に読み込まれるのを待つ
 window.addEventListener("load", () => {
   // manabaの課題提出ページかどうかを確認
