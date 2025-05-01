@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Manaba DnD File Uploader",
+  "name": "manabaドラッグアンドドロップ",
   "version": "1.0",
   "description": "manabaの課題提出ページのドラッグアンドドロップがやりやすくなる拡張機能",
   "host_permissions": ["https://*/ct/course_*_report_*"],
