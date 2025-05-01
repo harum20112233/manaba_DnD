@@ -3,10 +3,16 @@
 // ページが完全に読み込まれるのを待つ
 window.addEventListener("load", () => {
   // manabaの課題提出ページかどうかを確認
-  if (
+  // manabaの課題提出ページかどうかを確認
+  const isReportPage =
     window.location.href.includes("/ct/course_") &&
-    window.location.href.includes("_report_")
-  ) {
+    (window.location.href.includes("_report_") ||
+      document.querySelector('input[type="file"][name="RptSubmitFile"]'));
+
+  if (isReportPage) {
+    console.log(
+      "Manaba submission page detected, initializing drag and drop..."
+    );
     setTimeout(initDragAndDrop, 500); // すべての要素が確実に読み込まれるための少しの遅延
   }
 });
