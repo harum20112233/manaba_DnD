@@ -34,8 +34,7 @@ function initDragAndDropOverlay() {
   // メッセージ要素を作成
   const messageElement = document.createElement("div");
   messageElement.className = "manaba-dad-message";
-  // messageElement.textContent =
-  //   "ファイルをここにドラッグ＆ドロップ または クリックして選択";
+  messageElement.textContent = "ファイルをここにドラッグ＆ドロップ";
   messageElement.style.fontSize = "1.5em";
   messageElement.style.color = "#555";
   messageElement.style.textAlign = "center";
@@ -90,7 +89,7 @@ function initDragAndDropOverlay() {
     (e) => {
       // ファイルのドラッグか確認
       if (e.dataTransfer.types.includes("Files")) {
-        overlayDropZone.style.display = "block"; // 表示 (メッセージないのでblock)
+        overlayDropZone.style.display = "flex"; // 表示
       }
     },
     false
